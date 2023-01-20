@@ -1,7 +1,7 @@
 asgiref==3.6.0
 dj-database-url==1.2.0
 dj-static==0.0.6
-Django==3.2.3
+Django==4.1.5
 django-bootstrap3==22.2
 gunicorn==20.1.0
 pycodestyle==2.10.0
