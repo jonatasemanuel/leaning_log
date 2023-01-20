@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap3',
     'learning_logs', # <- nossas aplicações precisam estar aqui.
     'users',
-    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR,'learning_log/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,6 +121,8 @@ BOOTSTRAP3 = {
     'include_jquery': True,
 }
 
+STATIC_URL = '/static/'
+LOGIN_URL = 'login'
 
 # Configurações para o Heroku
 if os.getcwd() == '/app':
@@ -130,7 +132,7 @@ if os.getcwd() == '/app':
     }
 
     # Honra o cabeçãlho 'X-Forwarded-Photo' para request.is_secure()
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PHOTO', 'https')
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     # Cabeçalhos para permitir todos os host
     ALLOWED_HOSTS = ['*']
     # Configuração de recursos estáticos
@@ -144,8 +146,4 @@ if os.getcwd() == '/app':
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/static/'
-LOGIN_URL = 'login'
-
 
