@@ -134,7 +134,10 @@ if os.getcwd() == '/app':
     # Honra o cabeçãlho 'X-Forwarded-Photo' para request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     # Cabeçalhos para permitir todos os host
-    ALLOWED_HOSTS = ['*']
+    #ALLOWED_HOSTS = ['*']
+    # Only allow heroku to host the project.
+    ALLOWED_HOSTS = ['learning-log-final.herokuapp.com']
+    DEBUG = False
     # Configuração de recursos estáticos
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = 'staticfiles'
