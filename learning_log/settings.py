@@ -136,7 +136,7 @@ if os.getcwd() == '/app':
     # Cabeçalhos para permitir todos os host
     #ALLOWED_HOSTS = ['*']
     # Only allow heroku to host the project.
-    ALLOWED_HOSTS = ['learning-log-final.herokuapp.com']
+    ALLOWED_HOSTS = ['learning-tracker.herokuapp.com']
     DEBUG = False
     # Configuração de recursos estáticos
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
