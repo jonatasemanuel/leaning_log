@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -28,7 +28,7 @@ def topics(request):
 @login_required
 def topic(request, topic_id):
     """Mostra um único assunto e todas as suas entradas."""
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     check_topic_owner(request, topic)
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
@@ -54,7 +54,7 @@ def new_topic(request):
 @login_required
 def new_entry(request, topic_id):
     """Acrescenta uma nova entrada para um assunto em particular"""
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     check_topic_owner(request, topic)
     if request.method != 'POST':
         form = EntryForm()
@@ -73,7 +73,7 @@ def new_entry(request, topic_id):
 @login_required
 def edit_entry(request, entry_id):
     """Edita uma entrada existente."""
-    entry = Entry.objects.get(id=entry_id)
+    entry = get_object_or_404(Entry, id=entry_id)
     topic = entry.topic
     check_topic_owner(request, topic)
     if request.method != 'POST':
